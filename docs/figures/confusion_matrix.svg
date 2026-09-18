@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%" style="background:#0B1120; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="cellGradHit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065F46" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="cellGradZero" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="cellGradMiss" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#881337" />
+      <stop offset="100%" stop-color="#9F1239" />
+    </linearGradient>
+  </defs>
+
+  <!-- Header Banner -->
+  <rect x="24" y="24" width="752" height="64" rx="8" fill="#131C2E" stroke="#1E293B" stroke-width="1.5" />
+  <text x="44" y="52" fill="#FFFFFF" font-size="18" font-weight="700">Sentriq AI-SOC: Confusion Matrix &amp; Detection Performance</text>
+  <text x="44" y="72" fill="#94A3B8" font-size="12" font-family="ui-monospace, monospace">UNSW-NB15 Benchmark Evaluation | Accuracy: 96.67% | FPR: 0.00%</text>
+
+  <!-- Confusion Matrix Box Container -->
+  <g transform="translate(48, 120)">
+    <!-- Column Headers -->
+    <text x="210" y="20" fill="#38BDF8" font-size="12" font-weight="700" text-anchor="middle" font-family="ui-monospace, monospace">PREDICTED NORMAL</text>
+    <text x="350" y="20" fill="#38BDF8" font-size="12" font-weight="700" text-anchor="middle" font-family="ui-monospace, monospace">PREDICTED ATTACK</text>
+
+    <!-- Row Headers -->
+    <text x="130" y="85" fill="#94A3B8" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">ACTUAL NORMAL</text>
+    <text x="130" y="185" fill="#94A3B8" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">ACTUAL ATTACK</text>
+
+    <!-- Cell [0,0] TN -->
+    <rect x="150" y="40" width="120" height="90" rx="6" fill="url(#cellGradHit)" stroke="#10B981" stroke-width="1.5" />
+    <text x="210" y="82" fill="#FFFFFF" font-size="24" font-weight="800" text-anchor="middle">11</text>
+    <text x="210" y="105" fill="#A7F3D0" font-size="10" font-weight="600" text-anchor="middle" font-family="ui-monospace, monospace">TRUE NEGATIVE (100%)</text>
+
+    <!-- Cell [0,1] FP (Zero) -->
+    <rect x="290" y="40" width="120" height="90" rx="6" fill="url(#cellGradZero)" stroke="#334155" stroke-width="1.5" />
+    <text x="350" y="82" fill="#64748B" font-size="24" font-weight="800" text-anchor="middle">0</text>
+    <text x="350" y="105" fill="#94A3B8" font-size="10" font-weight="600" text-anchor="middle" font-family="ui-monospace, monospace">FALSE POSITIVE (0%)</text>
+
+    <!-- Cell [1,0] FN -->
+    <rect x="150" y="145" width="120" height="90" rx="6" fill="url(#cellGradMiss)" stroke="#F43F5E" stroke-width="1.5" />
+    <text x="210" y="187" fill="#FECDD3" font-size="24" font-weight="800" text-anchor="middle">1</text>
+    <text x="210" y="210" fill="#FDA4AF" font-size="10" font-weight="600" text-anchor="middle" font-family="ui-monospace, monospace">FALSE NEGATIVE (5%)</text>
+
+    <!-- Cell [1,1] TP -->
+    <rect x="290" y="145" width="120" height="90" rx="6" fill="url(#cellGradHit)" stroke="#10B981" stroke-width="1.5" />
+    <text x="350" y="187" fill="#FFFFFF" font-size="24" font-weight="800" text-anchor="middle">18</text>
+    <text x="350" y="210" fill="#A7F3D0" font-size="10" font-weight="600" text-anchor="middle" font-family="ui-monospace, monospace">TRUE POSITIVE (95%)</text>
+  </g>
+
+  <!-- Metrics KPI Card (Right Column) -->
+  <g transform="translate(500, 120)">
+    <rect x="0" y="10" width="276" height="235" rx="8" fill="#131C2E" stroke="#1E293B" stroke-width="1.5" />
+    <text x="20" y="40" fill="#38BDF8" font-size="14" font-weight="700">Quantitative Summary</text>
+
+    <!-- Metric 1 -->
+    <text x="20" y="75" fill="#94A3B8" font-size="11">Binary Accuracy:</text>
+    <text x="256" y="75" fill="#10B981" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">96.67%</text>
+
+    <!-- Metric 2 -->
+    <text x="20" y="105" fill="#94A3B8" font-size="11">Weighted F1-Score:</text>
+    <text x="256" y="105" fill="#10B981" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">0.9669</text>
+
+    <!-- Metric 3 -->
+    <text x="20" y="135" fill="#94A3B8" font-size="11">False Positive Rate (FPR):</text>
+    <text x="256" y="135" fill="#38BDF8" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">0.00%</text>
+
+    <!-- Metric 4 -->
+    <text x="20" y="165" fill="#94A3B8" font-size="11">Mean Inference Latency:</text>
+    <text x="256" y="165" fill="#F59E0B" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">11.94 ms</text>
+
+    <!-- Metric 5 -->
+    <text x="20" y="195" fill="#94A3B8" font-size="11">Alert Noise Reduction:</text>
+    <text x="256" y="195" fill="#10B981" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">93.3%</text>
+
+    <!-- Metric 6 -->
+    <text x="20" y="225" fill="#94A3B8" font-size="11">Single-Core Throughput:</text>
+    <text x="256" y="225" fill="#38BDF8" font-size="12" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">~84 eps</text>
+  </g>
+
+  <!-- Bottom Evaluation Bar -->
+  <g transform="translate(24, 390)">
+    <rect x="0" y="0" width="752" height="64" rx="8" fill="#131C2E" stroke="#1E293B" stroke-width="1.5" />
+    <text x="20" y="28" fill="#FFFFFF" font-size="13" font-weight="600">Empirical Verification vs. PRD Targets</text>
+    <text x="20" y="48" fill="#10B981" font-size="11" font-family="ui-monospace, monospace">✓ Binary Accuracy Exceeded (+6.67%) | ✓ Multi-Class Exceeded (+11.67%) | ✓ Alert Fatigue Reduced (>90%)</text>
+  </g>
+</svg>

@@ -1,0 +1,2 @@
+export { FacultyDemoModal } from './FacultyDemoModal';
+

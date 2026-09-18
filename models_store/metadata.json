@@ -1,0 +1,41 @@
+{
+  "model_version": "1.0.0",
+  "trained_at": "2026-09-08T06:04:42.603785+00:00",
+  "algorithm": "RandomForestClassifier",
+  "features": [
+    "dur",
+    "spkts",
+    "dpkts",
+    "sbytes",
+    "dbytes",
+    "rate",
+    "sttl",
+    "dttl",
+    "sload",
+    "dload",
+    "ct_dst_ltm",
+    "ct_src_dport_ltm",
+    "ct_dst_sport_ltm",
+    "destination_port",
+    "proto",
+    "service",
+    "source"
+  ],
+  "classes": [
+    "Brute Force",
+    "DoS",
+    "Exploitation",
+    "Normal",
+    "Port Scan",
+    "Web Attack"
+  ],
+  "dataset_sample_size": 149,
+  "dataset_provenance": "UNSW-NB15 Benchmark Samples & PRD Sec 12 Scenario Telemetry",
+  "metrics_summary": {
+    "binary_accuracy": 0.9667,
+    "binary_f1": 0.9669,
+    "binary_fpr": 0.0,
+    "multiclass_accuracy": 0.9667,
+    "multiclass_macro_f1": 0.8261
+  }
+}

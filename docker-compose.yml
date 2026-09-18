@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sentriq-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sentriq_soc}
+      POSTGRES_USER: ${POSTGRES_USER:-sentriq_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sentriq_secure_pass}
+    volumes:
+      - sentriq_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sentriq_admin} -d ${POSTGRES_DB:-sentriq_soc}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: sentriq-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-sentriq_admin}:${POSTGRES_PASSWORD:-sentriq_secure_pass}@db:5432/${POSTGRES_DB:-sentriq_soc}
+      SYNC_DATABASE_URL: postgresql://${POSTGRES_USER:-sentriq_admin}:${POSTGRES_PASSWORD:-sentriq_secure_pass}@db:5432/${POSTGRES_DB:-sentriq_soc}
+      PROJECT_NAME: "Sentriq AI-SOC"
+      ENVIRONMENT: production
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sentriq-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "5173:80"
+    depends_on:
+      - backend
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: sentriq-pgadmin
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@sentriq.local}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+    depends_on:
+      db:
+        condition: service_healthy
+    profiles:
+      - tools
+
+volumes:
+  sentriq_pgdata:
+    driver: local
