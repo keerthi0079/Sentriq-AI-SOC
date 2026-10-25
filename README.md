@@ -287,3 +287,4 @@ Developed as a Final-Year Major Academic Project:
 - **Domain**: Artificial Intelligence, Cyber Threat Intelligence, Data Engineering
 - **Alignment**: NIST SP 800-61 Computer Security Incident Handling Guide & MITRE ATT&CK Framework
 - **Repository**: [https://github.com/keerthi0079/Sentriq-AI-SOC](https://github.com/keerthi0079/Sentriq-AI-SOC)
+

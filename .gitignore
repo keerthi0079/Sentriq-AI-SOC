@@ -58,3 +58,8 @@ data/benchmark/*.gz
 models_store/*.joblib
 !models_store/.gitkeep
 
+# Local logs
+backend_*.txt
+*.log
+
+
